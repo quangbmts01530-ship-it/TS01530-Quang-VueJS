@@ -42,4 +42,4 @@ export default {
     .text-blue{
         color: blue;
     }
-</style>npm install
+</style>
