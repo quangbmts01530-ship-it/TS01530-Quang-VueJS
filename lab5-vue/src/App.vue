@@ -1,29 +1,31 @@
+<script setup>
+import { ref } from 'vue';
+import NhapSanPham from './components/CreatePost.vue';
+import DanhSachSanPham from './components/PostList.vue';
+const hardwareList = ref([]);
+
+// Hàm xử lý khi con (NhapSanPham) gửi dữ liệu lên
+const handleAddProduct = (newProduct) => {
+  hardwareList.value.unshift(newProduct); // Thêm lên đầu danh sách
+};
+</script>
+
 <template>
-  <div class="container py-5">
-    <div class="row justify-content-center">
-      <div class="col-md-7">
-        <CreatePost @add-post="handleNewPost" />
-        <hr class="my-5">
-        <PostList :posts="posts" />
-      </div>
-    </div>
+  <div class="main-layout">
+    <h1 class="title">Bai4 Lab5</h1>
+
+    <NhapSanPham @add-product="handleAddProduct" />
+
+    <DanhSachSanPham :items="hardwareList" />
   </div>
 </template>
 
-<script setup>
-import { ref } from 'vue';
-import CreatePost from './components/CreatePost.vue';
-import PostList from './components/PostList.vue';
-
-const posts = ref([
-  { 
-    title: 'Bật Mí 8 Nguyên Tắc Phối Màu Quần Áo', 
-    author: 'Nguyễn Văn Tèo', 
-    content: 'Bạn có thể phối màu theo nguyên tắc tam giác...' 
-  }
-]);
-
-const handleNewPost = (newPost) => {
-  posts.value.unshift(newPost); // Thêm vào đầu danh sách cho dễ nhìn
-};
-</script>
+<style>
+/* Đảm bảo toàn trang trắng sạch */
+body {
+  background-color: #f8f9fa;
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 40px;
+}
+</style>
